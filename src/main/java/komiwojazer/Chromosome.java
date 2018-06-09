@@ -21,13 +21,15 @@ public class Chromosome implements Comparable{
         fitness = getFitness();
     }
 
+    //generate chromosome from given list of citites
     public Chromosome(ArrayList<City> cities) {
         this.cities = cities;
         distance = getDistance();
         fitness = getFitness();
     }
 
-    public ArrayList<City> generateRandom() {
+    //generate list with randomly placed cities
+    private ArrayList<City> generateRandom() {
         for (int i = 0; i < CitiesManager.getCitiesNumber(); i++) {
             cities.add(CitiesManager.getCityAt(i));
         }
@@ -35,10 +37,12 @@ public class Chromosome implements Comparable{
         return cities;
     }
 
+
     public ArrayList<City> getCities() {
         return cities;
     }
 
+    //get total distance of tour that this chromosome represents
     public double getDistance() {
 
         if (distance != 0.0) {
@@ -54,6 +58,7 @@ public class Chromosome implements Comparable{
         return distance;
     }
 
+    //get value of fitness function which is defined as 1/distance
     public double getFitness() {
         fitness = 1. / getDistance();
         return fitness;
